@@ -1,5 +1,5 @@
 pipeline {
-  agent { docker { image 'jenkins:later' } }
+  agent { docker { image 'python:3.7.6'} }
   stages {
     stage('build') {
       steps('Make Virtual Env') {
