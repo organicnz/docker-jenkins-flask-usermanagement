@@ -11,7 +11,7 @@ pipeline {
     stage('test') {
       steps {
         withEnv(["HOME=${env.WORKSPACE}"]) {
-            sh 'python testcalsulator.py'
+            sh 'python3 testcalculator.py'
         }
       }
       post {
