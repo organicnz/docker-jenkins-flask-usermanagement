@@ -1,75 +1,71 @@
-# **Flask Web Microframework**
+## Overview
 
-## **Prerequisites**
+This Flask application contains the basic user management functionality (register, login, logout) to demonstrate the use of pytest.
 
-You need to have a functional Python 3 environment to run this project. I recommend [pyenv](https://github.com/pyenv/pyenv) and [pyenv-virtualenv](https://github.com/pyenv/pyenv-virtualenv). 
+## Motivation
 
-After you can download and install the python modules into a segregated virtualenv.
+After reading Brian Okken's book (Python Testing with pytest), I was convinced that I should learn about pytest and then figure out how to use it to test Flask applications.
 
-```bash
-# install python and create virtualenv
-pyenv install 3.7.6
-pyenv virtualenv 3.7.6 webmf-python-flask
-# change to virtualenv
-cd .
-# update pip module
-pip install --upgrade pip
+## How to Run
+
+In the top-level directory:
+
+    $ export FLASK_APP=app.py
+    $ export FLASK_ENV=development
+    $ flask run
+
+## Installation Instructions
+
+Pull down the source code from this GitLab repository:
+
+```sh
+git clone git@gitlab.com:patkennedy79/flask_user_management_example.git```
+
+Create a new virtual environment:
+
+```sh
+$ cd flask_user_management_example
+$ python3 -m venv venv
 ```
 
-## **Running the Application**
+Activate the virtual environment:
 
-These instructions and scripts have been tested on macOS (aka Mac OS X) and Linux with Python installed.
-
-### **Test using Python**
-
-```bash
-# Install Required Packages
-pip install -r requirements.txt
-# Run Server
-./app.py &
-# Manually Test
-curl -i localhost:5000/
-curl -i localhost:5000/hello/Simon
+```sh
+$ source venv/bin/activate
 ```
 
-### **Using Docker Compose**
+Install the python packages in requirements.txt:
 
-```bash
-# Start containerized service on Docker
-docker-compose up -d
-# Determine Guest is native Docker, Docker-Machine or Docker-Desktop
-[ -z ${DOCKER_MACHINE_NAME} ] || WEBSERVER=$(docker-machine ip ${DOCKER_MACHINE_NAME})
-WEBSERVER=${WEBSERVER:-localhost}
-# Manually Test
-curl -i $WEBSERVER:5000/
-curl -i $WEBSERVER:5000/hello/Simon
+```sh
+(venv) $ pip install -r requirements.txt
 ```
 
-### **Using Docker on Vagrant/Virtualbox**
+Set the file that contains the Flask application and specify that the development environment should be used:
 
-```bash
-# Start containerized service on Vagrant/Virtualbox guest
-vagrant up
-# Manually Test
-curl -i localhost:5000/
-curl -i localhost:5000/hello/Simon
+```sh
+(venv) $ export FLASK_APP=app.py
+(venv) $ export FLASK_ENV=development
 ```
 
-## **Running Automated Tests**
+Run development server to serve the Flask application:
 
-```bash
-./test.py
+```sh
+(venv) $ flask run
 ```
 
-## Resources
+## Key Python Modules Used
 
-* Python Web Microframework
-    * [Flask](http://flask.pocoo.org/)
-* Testing
-    * [Testing Flask Applications](http://flask.pocoo.org/docs/1.0/testing/)
-    * [Python unittests in Jenkins?](https://stackoverflow.com/questions/11241781/python-unittests-in-jenkins)
-* Python Environment
-    * [python](https://www.python.org/) - language versions
-    * [pyenv](https://github.com/pyenv/pyenv) - manage python versions
-    * [virtualenv](https://virtualenv.pypa.io) to isolate packages with both Python 2 and Python 3.
-    * [pyenv-virtualenv](https://github.com/pyenv/pyenv-virtualenv) - pyenv plugin for ease-of-use pyenv + virtualenv integration.  Can automatically switch virtualenv based on setting in `.python-version`.
+- Flask: micro-framework for web application development
+- Jinga2 - templating engine
+- SQLAlchemy - ORM (Object Relational Mapper)
+- Flask-Bcrypt - password hashing
+- Flask-Login - support for user management
+- Flask-WTF - simplifies forms
+
+This application is written using Python 3.8.5.
+
+## Testing
+
+```sh
+(venv) $ pytest -v
+```
