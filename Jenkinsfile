@@ -10,7 +10,7 @@ pipeline {
       steps('Make Virtual Env') {
         withEnv(["HOME=${env.WORKSPACE}"]) {
             sh 'pip3 install -r requirements.txt --user'
-            sh 'pip install flask'
+            sh 'pip3 install flask'
         }
       }
     }
