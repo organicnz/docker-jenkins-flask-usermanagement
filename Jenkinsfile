@@ -11,7 +11,7 @@ pipeline {
         withEnv(["HOME=${env.WORKSPACE}"]) {
             sh 'pip3 install -r requirements.txt --user'
             sh 'pip3 install flask'
-            sh 'pytest -v'
+            sh 'pip3 install numpy pytest'
         }
       }
     }
