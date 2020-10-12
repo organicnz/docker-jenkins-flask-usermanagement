@@ -17,7 +17,7 @@ pipeline {
     stage('test') {
       steps {
         withEnv(["HOME=${env.WORKSPACE}"]) {
-            sh 'flask run'
+            sh 'pytest -v'
         }
       }
       post {
