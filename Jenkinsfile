@@ -8,14 +8,14 @@ pipeline {
   stages {
     stage('build') {
       steps('Make Virtual Env') {
-        withEnv(["HOME=${env.WORKSPACE}"]) {
+        withEnv(["HOME=${env.venv}"]) {
             sh 'pip3 install -r requirements.txt --user'
         }
       }
     }
     stage('test') {
       steps {
-        withEnv(["HOME=${env.WORKSPACE}"]) {
+        withEnv(["HOME=${env.venv}"]) {
             sh 'flask run'
         }
       }
