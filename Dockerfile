@@ -7,6 +7,7 @@ WORKDIR /usr/src/app
 # Install app dependencies
 COPY requirements.txt /usr/src/app/
 RUN pip3 install -r requirements.txt
+RUN pip3 install flask
 
 # Bundle app source
 COPY . /usr/src/app
